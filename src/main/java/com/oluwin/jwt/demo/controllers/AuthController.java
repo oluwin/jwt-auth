@@ -10,6 +10,8 @@ import com.oluwin.jwt.demo.repository.RoleRepository;
 import com.oluwin.jwt.demo.repository.UserRepository;
 import com.oluwin.jwt.demo.security.jwt.JwtUtils;
 import com.oluwin.jwt.demo.security.services.UserDetailsImpl;
+import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -60,6 +62,9 @@ public class AuthController {
         String jwt = jwtUtils.generateJwtToken(authentication);
         
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<String> roles = userDetails.getAuthorities().stream().
+        List<String> roles = userDetails.getAuthorities().stream()
+             
+                
+        return ResponseEntity.ok(new JwtResponse(jwt,userDetails.))
     }
 }
